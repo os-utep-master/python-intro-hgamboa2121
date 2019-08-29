@@ -1,10 +1,11 @@
+
 import re
 
 string = dict()
 file = open("declaration.txt", "r")
 for line in file:
     line = line.split(' ')
-    line = line.re.sub('[^A-Za-Z0-9]+', ' ', line)
+    line = re.sub('[^A-Za-Z0-9]+', ' ', line)
 
     for word in line:
         if word in string.keys():
@@ -14,7 +15,7 @@ for line in file:
 
 string.pop('')
 
-wordCountKey = open("wordCountKey.txt", 'w+')
+wordCountKey = open("myOutput.txt", 'w+')
 
 for setWord in sorted(string.keys()):
     wordCountKey.write("%s %s\n" % (setWord, string[setWord]))
