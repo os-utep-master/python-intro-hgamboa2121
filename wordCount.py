@@ -5,7 +5,8 @@ string = dict()
 file = open("declaration.txt", "r")
 for line in file:
     line = line.split(' ')
-    line = re.sub('[^A-Za-Z0-9]+', ' ', line)
+    line = re.sub('[^A-Za-z0-9]+', ' ', line)
+    line = line.lower()
 
     for word in line:
         if word in string.keys():
