@@ -1,9 +1,20 @@
 import re
 
-d = {}
-with open("speech.txt") as f:
-    for line in f:
-        (key, val) = line.split().lowerCase()
-        d[int(key)] = val
-        f = open("speechTest.txt", "w+")
-        f.write("%d\r\n" % (d + 1))
+string = dict()
+file = open("declaration.txt", "r")
+for line in file:
+    line = line.split(' ')
+    line = line.re.sub('[^A-Za-Z0-9]+', ' ', line)
+
+    for word in line:
+        if word in string.keys():
+            string[word] += 1
+        else:
+            string[word] = 1
+
+string.pop('')
+
+wordCountKey = open("wordCountKey.txt", 'w+')
+
+for setWord in sorted(string.keys()):
+    wordCountKey.write("%s %s\n" % (setWord, string[setWord]))
